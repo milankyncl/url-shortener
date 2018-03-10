@@ -7,5 +7,31 @@
 </head>
 <body>
 
+    <form action="{% url 'save-link' %}" method="post" id="link-form">
+
+        <input type="url" name="link"> <button type="submit">Odeslat</button>
+
+        <div id="link-form-response"></div>
+
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+
+        $('#link-form').submit(function() {
+
+            $.ajax({
+                data: $(this).serialize(),
+                type: $(this).attr('method'),
+                url: $(this).attr('action'),
+                success: function(response) {
+
+                    $('#link-form-response').html(response);
+                }
+            });
+            return false;
+
+        });
+    </script>
 </body>
 </html>

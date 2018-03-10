@@ -8,5 +8,7 @@ urlpatterns = [
 
     path('', views.index, name='index'),
 
-    path('l/<slug:link_code>/', views.detail, name='detail')
+    path('l/<slug:link_code>/', views.detail, name='detail'),
+
+    path('save-link/', views.save_link, name='save-link')
 ]
